@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f2f5;
+    }
+
+    .login-container {
+        width: 300px;
+        padding: 16px;
+        background-color: #ffffff;
+        margin: 0 auto;
+        margin-top: 100px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    }
+
+        .login-container h2 {
+            margin: 0 0 20px;
+            text-align: center;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        .login-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+            .login-container input[type="submit"]:hover {
+                opacity: 0.8;
+            }
+</style>
+<div class="login-container">
+    <h2>Login</h2>
+    @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+    {
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="submit" value="Login">
+    }
+
+    @if (Model != null && !string.IsNullOrEmpty(Model.Token))
+    {
+        <div>
+            <p>Token: @Model.Token</p>
+        </div>
+    }
+</div>
